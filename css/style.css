@@ -148,3 +148,16 @@
 .chat-input textarea:valid ~ span{
   visibility: visible;
 }
+.section-tabs {
+  display: flex;
+  justify-content: left;
+  margin: 10px 0;
+}
+.section-tabs li a {
+  font-size : 1.2rem;
+  text-align: center;
+}
+.no-history {
+  text-align: center;
+  margin-top: 20px;
+}
