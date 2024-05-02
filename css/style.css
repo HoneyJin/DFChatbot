@@ -84,9 +84,11 @@
   font-size: 1.5em;
 }
 .chatbot .chatbox {
-  height: 600px;
+  height: 450px;
   overflow-y: auto;
-  padding: 15px 20px 70px;
+  padding: 15px 20px 10px;
+  margin-top: 30px;
+
 }
 .chatbox .chat {
   display: flex;
