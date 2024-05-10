@@ -14,13 +14,18 @@ async def render_login_page(request: Request):
 @app.post("/login")
 async def login(request: Request, username: str = Form(None), password: str = Form(None)):
     if username == "admin" and password == "1234":
-        return RedirectResponse(url="/case_select")
+        return RedirectResponse(url="/upload_case")
     else:
         return templates.TemplateResponse("login.html", {"request": request, "login_failed": True})
 
-@app.post("/case_select", response_class=HTMLResponse)
-async def process_case_selection(request: Request):
-    return templates.TemplateResponse("case_select.html", {"request": request})
+@app.post("/upload_case", response_class=HTMLResponse)
+async def process_upload_case(request: Request):
+    # Add functionality to process the uploaded case here
+    return templates.TemplateResponse("upload_case.html", {"request": request})
+
+# @app.post("/case_select", response_class=HTMLResponse)
+# async def process_case_selection(request: Request):
+#     return templates.TemplateResponse("case_select.html", {"request": request})
 
 @app.get("/new_case", response_class=HTMLResponse)
 async def new_case(request: Request):

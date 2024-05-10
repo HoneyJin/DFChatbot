@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}기존 사건 불러오기{% endblock %}
+{% block title %}Data Management{% endblock %}
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
     <script src="{{ url_for('static', path='/js/data_manage.js') }}"></script>
@@ -33,14 +33,14 @@
         <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
           <h5 class="card-title">Upload your data manually</h5>
           <p class="card-text">
-            <button class="button">SELECT FILE</button>
+            <button class="button" id="fileSelectButton">SELECT FILE</button>
           </p>
-          <input type="file" id="fileElem" multiple accept="*/*" style="display:none">
+          <input type="file" id="fileElem" accept=".xlsx" multiple style="display:none">
         </div>
-        <div id="drop-area" class="drag-drop" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #bfbfbf;">
-          <img src="/static/img/upload.png" alt="대체_텍스트" style="width: 100px; height: 100px; object-fit: cover;">
-          <p>Drag & Drop your dataset here.</p>
-        </div>
+      <div id="drop-area" class="drag-drop" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #bfbfbf; border: 2px dashed #ccc; border-radius: 10px;">
+        <img src="/static/img/upload.png" alt="대체_텍스트" style="width: 100px; height: 100px; object-fit: cover;">
+        <p id="drag-text">Drag & Drop your dataset here.</p>
+      </div>
       </div>
     </div>
       <!-- Files List Section -->
