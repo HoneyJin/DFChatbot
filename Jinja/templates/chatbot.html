@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}기존 사건 불러오기{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <script src="{{ url_for('static', path='/js/chatbot.js') }}"></script>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- Sidebar Menu -->
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+      <div class="d-flex flex-column align-items-center align-items-md-start px-3 pt-2 min-vh-100">
+        <a href="#" class="mb-3 menu"><img src="/static/img/menu.png" class="img-fluid btn menu-icon"></a>
+        <a href="#" class="mb-3 new-case"><img src="/static/img/file_add.png" class="img-fluid btn new-case-icon"></a>
+        <a href="#" class="mb-3 upload-case"><img src="/static/img/file_folder.png" class="img-fluid btn upload-case-icon"></a>
+        <a href="#" class="mb-3 data-manage"><img src="/static/img/document.png" class="img-fluid btn data-manage-icon"></a>
+        <a href="#" alt="" class="mb-3 chatbot-icon"><img src="/static/img/chat.png" class="img-fluid btn chatbot-icon"></a>
+      </div>
+    </div>
+    <!-- Main Content -->
+    <div class="col bg-light chat-menu-area">
+      <div page_name class="mb-4">
+        <ul class="nav nav-tabs section-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Chat History</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/chatbot_graph">Graph</a>
+          </li>
+        </ul>
+      </div>
+      <div class="chat-history-section">
+        <ul class="chat-history-lst">
+          <div class="row">
+            <div class="col">
+              <li class="history">
+                <h4>안티포렌식 행위 탐지</h4>
+                <p>제공해주신 데이터에서는 ccleanser를 사용한 흔적이 ...</p>
+              </li>
+            </div>
+            <div class="col-md-1">
+              <i class="fas fa-trash-alt"></i>
+            </div>
+          </div>
+          <li class="no-history">
+            <h2>생성된 기록이 없습니다.<br>챗봇과 새로운 대화를 시작해보세요.</h2>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col bg-light chatbot-area">
+      <div class="chatbot">
+        <header>
+          <h2>DF Chatbot</h2>
+        </header>
+        <ul class="chatbox">
+          <li class="chat incoming">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <p>안녕하세요<br>저는 Digital Forensic Chatbot입니다.<br>올려주신 데이터에 대해 질문해주세요!</p>
+          </li>
+          <li class="chat outgoing">
+            <p>input 예시입니다.</p>
+          </li>
+        </ul>
+        <div class="chat-input">
+          <textarea id="user-message" placeholder="메세지를 입력하고 Enter를 눌러주세요" required></textarea>
+          <span id="send-btn" class="material-symbols-rounded">send</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    iconDecision();
+    const sendChatBtn = document.getElementById('send-btn');
+    const chatInput = document.getElementById('user-message');
+
+    let userMessage;
+
+    const handleChat = () => {
+      userMessage = chatInput.value.trim();
+      console.log(userMessage);
+      // Add your logic for handling the user message here
+    }
+
+    sendChatBtn.addEventListener('click', handleChat);
+  });
+</script>
+{% endblock %}

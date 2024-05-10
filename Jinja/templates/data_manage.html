@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}기존 사건 불러오기{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <script src="{{ url_for('static', path='/js/data_manage.js') }}"></script>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- Sidebar Menu -->
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+      <div class="d-flex flex-column align-items-center align-items-md-start px-3 pt-2 min-vh-100">
+        <a href="#" class="mb-3 menu"><img src="/static/img/menu.png" class="img-fluid btn menu-icon"></a>
+        <a href="#" class="mb-3 new-case"><img src="/static/img/file_add.png" class="img-fluid btn new-case-icon"></a>
+        <a href="#" class="mb-3 upload-case"><img src="/static/img/file_folder.png" class="img-fluid btn upload-case-icon"></a>
+        <a href="#" class="mb-3 data-manage"><img src="/static/img/document.png" class="img-fluid btn data-manage-icon"></a>
+        <a href="#" alt="" class="mb-3 chatbot-icon"><img src="/static/img/chat.png" class="img-fluid btn chatbot-icon"></a>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="col bg-light">
+      <div class="mb-4">
+        <h2>Data Management</h2>
+      </div>
+    <!-- File Upload Section -->
+    <div class="card mb-4">
+      <div class="card-header">
+        데이터 업로드
+      </div>
+      <div class="card-body" style="display: flex; flex-direction: row;">
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+          <h5 class="card-title">Upload your data manually</h5>
+          <p class="card-text">
+            <button class="button">SELECT FILE</button>
+          </p>
+          <input type="file" id="fileElem" multiple accept="*/*" style="display:none">
+        </div>
+        <div id="drop-area" class="drag-drop" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #bfbfbf;">
+          <img src="/static/img/upload.png" alt="대체_텍스트" style="width: 100px; height: 100px; object-fit: cover;">
+          <p>Drag & Drop your dataset here.</p>
+        </div>
+      </div>
+    </div>
+      <!-- Files List Section -->
+      <div class="card">
+        <div class="card-header">
+          사건 정보
+        </div>
+        <div class="card-body">
+          <div class="input-group mb-3">
+            <button id="dropdownButton" class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">검색조건</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" onclick="selectDropdownItem('파일명')">파일명</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectDropdownItem('날짜')">날짜</a></li>
+            </ul>
+            <input type="text" class="form-control" id="selectedOption" aria-label="Text input with dropdown button">
+            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+        </div>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">파일명</th>
+                <th scope="col">아티팩트 수</th>
+                <th scope="col">크기</th>
+                <th scope="col">날짜</th>
+                <th scope="col">삭제</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Exported_result.xlsx</td>
+                <td>199,218</td>
+                <td>20.6 MB</td>
+                <td>2024-04-03 오전 10:45</td>
+                <td style="text-align: center;"><button style="background: none; border: none;"><i class="fas fa-trash-alt"></i></button></td>               
+              </tr>
+              <tr>
+                <td>Test_result.xlsx</td>
+                <td>100,111</td>
+                <td>10.2 MB</td>
+                <td>2024-04-02 오전 09:10</td>
+                <td style="text-align: center;"><button style="background: none; border: none;"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td>Main.xlsx</td>
+                <td>50,102</td>
+                <td>5.3 MB</td>
+                <td>2024-03-31 오후 14:30</td>
+                <td style="text-align: center;"><button style="background: none; border: none;"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-end mt-3">
+            <div class="button-area text-end">
+              <button type="button" class="btn btn-primary">분석 시작</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}기존 사건 불러오기{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- Sidebar Menu -->
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+      <div class="d-flex flex-column align-items-center align-items-md-start px-3 pt-2 min-vh-100">
+        <a href="#" class="mb-3 menu"><img src="/static/img/menu.png" class="img-fluid btn menu-icon"></a>
+        <a href="#" class="mb-3 new-case"><img src="/static/img/file_add.png" class="img-fluid btn new-case-icon"></a>
+        <a href="#" class="mb-3 upload-case"><img src="/static/img/file_folder.png" class="img-fluid btn upload-case-icon"></a>
+        <a href="#" class="mb-3 data-manage"><img src="/static/img/document.png" class="img-fluid btn data-manage-icon"></a>
+        <a href="#" alt="" class="mb-3 chatbot-icon"><img src="/static/img/chat.png" class="img-fluid btn chatbot-icon"></a>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="col bg-light">
+      <div page_name class="mb-4">
+        <h2>기존 사건 불러오기</h2>
+      </div>
+      <div class="case-table">
+        <table class="table table-bordered case-table text-center">
+            <thead>
+              <tr>
+                <th scope="col">사건번호</th>
+                <th scope="col">죄명</th>
+                <th scope="col">피(혐)의자</th>
+                <th scope="col">사건명</th>
+                <th scope="col">작성일</th>
+                <th scope="col">등록일</th>
+                <th scope="col">삭제</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-case-name="노예호 사건">
+                <td>2023-가-154</td>
+                <td>사기</td>
+                <td>노예호</td>
+                <td>노예호 사건</td>
+                <td>2024. 05. 01</td>
+                <td>2024. 05. 01</td>
+                <td><i class="fas fa-trash-alt" onclick="trashcanClicked(this)"></i></td>               
+              </tr>
+              <tr data-case-name="샘플 사건">
+                <td>2024-123</td>
+                <td>샘플</td>
+                <td>홍길동</td>
+                <td>샘플 사건</td>
+                <td>2024. 04. 29</td>
+                <td>2024. 04. 29</td>
+                <td><i class="fas fa-trash-alt" onclick="trashcanClicked(this)"></i></td>  
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/upload_case.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    iconDecision();
+    const rows = document.querySelectorAll("tbody tr");
+    rows.forEach(row => {
+      row.addEventListener("click", function() {
+        const caseName = this.getAttribute("data-case-name");
+        window.location.href = `/chatbot?caseName=${encodeURIComponent(caseName)}`;
+      });
+    });
+  });
+</script>
+{% endblock %}

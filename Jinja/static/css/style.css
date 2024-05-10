@@ -1,0 +1,165 @@
+.button {
+  background-color: #fff;
+  border: black solid 2px;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+.drag-drop {
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  text-align: center;
+  padding: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.drag-drop.dragover {
+  border-color: #000;
+}
+.table thead th {
+  background-color: #21419b;
+  color: white;
+}
+
+/* 추가된 스타일 */
+.bg-dark {
+  background-color: #0f1e46 !important;
+  width: 100px;
+}
+
+/* By. CR */
+.case-info-box {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 40px;
+}
+
+.case-info-header {
+  font-size: 15px;
+  font-weight: bold;
+  width : 10%;
+}
+
+.menu-highlight {
+  background-color: #f8f9fa;
+}
+
+.input-label-group {
+  margin: 1%;
+}
+.robot-icon img {
+  width: 10%;
+  height: 10%;
+}
+#send-btn {
+  width: 5%;
+  height: 5%;
+}
+#chat-input-text {
+  width: 80%;
+  height: 5%;
+}
+.chatbot {
+  position: fixed;
+  bottom: 100px;
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  align-items: center;
+}
+.chatbot header {
+  background: #0804ff;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  border-radius: 15px 15px 0 0;
+  text-align: center;
+}
+.chatbot header h2 {
+  color: #ccc;
+  font-size: 1.5em;
+}
+.chatbot .chatbox {
+  height: 450px;
+  overflow-y: auto;
+  padding: 15px 20px 10px;
+  margin-top: 30px;
+
+}
+.chatbox .chat {
+  display: flex;
+}
+.chatbox .chat p {
+  font-size: 0.95rem;
+  max-width: 80%;
+  color: #fff;
+  padding: 12px 15px;
+  border-radius: 10px 10px 10px 10px;
+  background: #0804ff;
+}
+.chatbox .incoming span {
+  height : 32px;
+  width: 32px;
+  color : white;
+  background-color : #0804ff;
+  text-align: center;
+  line-height: 32px;
+  border-radius: 10%;
+  margin: 0 10px 7px 0;
+  align-self: flex-end;
+}
+.chatbox .incoming p {
+  color: #000;
+  background: #f2f2f2;
+  border-radius: 10px 10px 10px 0;
+}
+.chatbox .outgoing {
+  margin: 20px 0;
+  justify-content: flex-end;
+}
+.chatbot .chat-input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding : 5px 20px;
+  border-top: 1px solid #ccc;
+  display: flex;
+  gap: 5px;
+}
+.chat-input textarea {
+  height: 55px;
+  width: 100%;
+  border : none;
+  outline: none;
+  font-size : 1rem;
+  resize: none;
+  padding: 16px 15px 16px 0;
+}
+.chat-input span {
+  align-self: center;
+  color : #0804ff;
+  font-size : 1.5rem;
+  cursor: pointer;
+  visibility: hidden;
+}
+.chat-input textarea:valid ~ span{
+  visibility: visible;
+}
+.section-tabs {
+  display: flex;
+  justify-content: left;
+  margin: 10px 0;
+}
+.section-tabs li a {
+  font-size : 1.2rem;
+  text-align: center;
+}
+.no-history {
+  text-align: center;
+  margin-top: 20px;
+}

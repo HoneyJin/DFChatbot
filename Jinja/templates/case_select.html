@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/case_select.css') }}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Digital Forensic Chat</h1>
+    <a href="/new_case" class="btn btn-primary" style="width: 250px;">새 사건 등록하기</a>
+    <a href="/upload_case" class="btn btn-warning" style="width: 250px; color: white;">기존 사건 불러오기</a>       
+</div>
+{% endblock %}

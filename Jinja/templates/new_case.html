@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}새 사건 등록하기{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- Sidebar Menu -->
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+      <div class="d-flex flex-column align-items-center align-items-md-start px-3 pt-2 min-vh-100">
+        <a href="#" class="mb-3 menu"><img src="/static/img/menu.png" class="img-fluid btn menu-icon"></a>
+        <a href="#" class="mb-3 new-case"><img src="/static/img/file_add.png" class="img-fluid btn new-case-icon"></a>
+        <a href="#" class="mb-3 upload-case"><img src="/static/img/file_folder.png" class="img-fluid btn upload-case-icon"></a>
+        <a href="#" class="mb-3 data-manage"><img src="/static/img/document.png" class="img-fluid btn data-manage-icon"></a>
+        <a href="#" alt="" class="mb-3 chatbot-icon"><img src="/static/img/chat.png" class="img-fluid btn chatbot-icon"></a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col bg-light">
+      <div page_name class="mb-4">
+        <h2>새 사건 등록하기</h2>
+      </div>
+      <!-- File Upload Section -->
+      <div class="new-case-info">
+        <div class="container text-center case-info-box needs-validation" novalidate>
+          <form action="/data_manage" method="post">
+            <div class="form-group row input-label-group">
+              <label for="staticEmail" class="col-sm-2 col-form-label case-info-header">사건 번호</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputCaseNum" placeholder="2023-가-154" required>
+                <div class="invalid-feedback">
+                  사건 번호를 입력해주세요.
+                </div>
+              </div>
+            </div>
+            <div class="form-group row input-label-group">
+              <label for="staticEmail" class="col-sm-2 col-form-label case-info-header">사건명</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control case-num" id="inputCaseName" placeholder="노예호 사건" required>
+                <div class="invalid-feedback">
+                  사건명을 입력해주세요.
+                </div>
+              </div>
+            </div>
+            <div class="form-group row input-label-group">
+              <label for="staticEmail" class="col-sm-2 col-form-label case-info-header">분석자</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control user-name" id="inputUserName" placeholder="홍길동" required>
+                <div class="invalid-feedback">
+                  분석자 이름을 입력해주세요.
+                </div>
+              </div>
+            </div>
+            <div class="form-group row input-label-group">
+              <label for="staticEmail" class="col-sm-2 col-form-label case-info-header">죄명/법조</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control law-name" id="inputLawName" placeholder="사기죄(형법 제347조 제1항)" required>
+                <div class="invalid-feedback">
+                  죄명/법조를 입력해주세요.
+                </div>
+              </div>
+            </div>
+            <div class="form-group row input-label-group">
+              <label for="staticEmail" class="col-sm-2 col-form-label case-info-header">피(혐)의자</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control suspect-name" id="inputSuspectName" placeholder="노예호">
+              </div>
+            </div>
+            <div class="form-group row input-label-group">
+              <label for="staticEmail" class="col-sm-2 col-form-label case-info-header">기타 사항</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control case-description" id="inputCaseDescription" placeholder="기타 사항을 입력해주세요">
+              </div>
+            </div>
+            <div class="button-area text-end">
+              <button type="submit" class="btn btn-primary">입력 완료</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/new_case.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    iconDecision();
+
+    var form = document.getElementById('new-case-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      if (form.checkValidity() === false) {
+        event.stopPropagation();
+      } else {
+        gotoDataManage();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  });
+</script>
+{% endblock %}
